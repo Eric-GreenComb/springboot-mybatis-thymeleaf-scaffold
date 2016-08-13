@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin PureCSS</title>
+    <!-- Insert PureCSS -->
+    <link rel="stylesheet" href="/css/pure-min.css"/>
+
+    <!-- Insert FontAwesome -->
+    <!--<link rel="stylesheet" href="/css/font-awesome.min.css"/>-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+
+    <!-- Insert ChartJS -->
+    <script src="/js/Chart.min.js"></script>
+
+    <!-- Insert Style Base AdminPure -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+</head>
+<body>
+
+<div id="layout">
+
+    <div id="menu">
+        <nav class="pure-menu">
+            <h1 class="site-logo">Admin<strong th:text="${menu_title}">pure</strong></h1>
+            <div class="menu-item-divided"></div>
+            <h2 class="pure-menu-heading">Orders</h2>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Reports</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">New Orders</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Clients</a></li>
+            </ul>
+            <h2 class="pure-menu-heading">Settings</h2>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Users</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Profile</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="main">
+        <div class="header">
+            <div class="pure-g">
+                <div class="pure-u-1-2"><h1>Dashboard</h1></div>
+                <div class="pure-u-1-2 text-right">
+                    <section class="user-info">
+                        <i class="fa fa-user"></i> <a href="#" rel="User">Dioney Vítor</a>
+                        <span class="divider"></span>
+                        <i class="fa fa-cog"></i> <a href="#" rel="User">Settings</a>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="content">
+            <div class="breadcrumb">
+                <i class="fa fa-home"></i><a href="#" rel="Dashboard">Dashboard</a>
+                <i class="fa fa-angle-right"></i><a href="#" rel="Dashboard">Sales</a>
+            </div>
+            <div class="pure-g">
+                <div class="pure-u-1-2 box">
+                    <div class="l-box">
+                        <script src="forms.html"></script>
+                        <div class="header">
+                            <h3 class="header-title">Sales</h3>
+                        </div>
+                        <div class="box-content">
+                            <canvas id="myChart" width="400" height="260"></canvas>
+                            <script>
+								var ctx = document.getElementById("myChart");
+								var myChart = new Chart(ctx, {
+								    type: 'bar',
+								    data: {
+								        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+								        datasets: [{
+								            label: '# of Votes',
+								            data: [12, 14, 8, 2, 5, 1],
+								            backgroundColor: [
+								                'rgba(255, 99, 132, 0.2)',
+								                'rgba(54, 162, 235, 0.2)',
+								                'rgba(255, 206, 86, 0.2)',
+								                'rgba(75, 192, 192, 0.2)',
+								                'rgba(153, 102, 255, 0.2)',
+								                'rgba(255, 159, 64, 0.2)'
+								            ],
+								            borderColor: [
+								                'rgba(255,99,132,1)',
+								                'rgba(54, 162, 235, 1)',
+								                'rgba(255, 206, 86, 1)',
+								                'rgba(75, 192, 192, 1)',
+								                'rgba(153, 102, 255, 1)',
+								                'rgba(255, 159, 64, 1)'
+								            ],
+								            borderWidth: 1
+								        }]
+								    },
+								    options: {
+								        scales: {
+								            yAxes: [{
+								                ticks: {
+								                    beginAtZero:true
+								                }
+								            }]
+								        }
+								    }
+								});
+
+
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class="pure-u-1-2 box">
+                    <div class="l-box">
+                        <div class="header">
+                            <h3 class="header-title">Message</h3>
+                        </div>
+                        <div class="box-content">
+                            <form class="pure-form pure-form-stacked">
+                                <div class="pure-g">
+                                    <div class="pure-u-1-1">
+                                        <label for="title">Title</label>
+                                        <input id="title" type="text" class="pure-u-1-1" />
+
+                                        <label for="post">Post Content</label>
+                                        <textarea id="post" rows="10" class="pure-u-1-1"></textarea>
+
+                                        <hr/>
+
+                                        <button class="pure-button pure-button-primary">Save</button>
+                                        <button class="pure-button">Save in Draft</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pure-g">
+                <div class="pure-u-1-2 box">
+                    <div class="l-box">
+                        <div class="header">
+                            <h3 class="header-title">Messages</h3>
+                        </div>
+                        <div class="box-content">
+                            <span class="msg success"><i class="fa fa-check"></i>Message sending success!</span>
+                            <span class="msg error"><i class="fa fa-ban"></i>Message NOT sending verify errors!</span>
+                            <span class="msg alert"><i class="fa fa-exclamation-triangle"></i>Your permit geolocalization?</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pure-u-1-2 box">
+                    <div class="l-box">
+                        <div class="header">
+                            <h3 class="header-title">Lists Content</h3>
+                        </div>
+                        <div class="box-content" th:each="user : ${users}">
+                            <p th:text="${user.name}">ssss</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pure-g">
+                <div class="pure-u-4-5">
+                    <div class="l-box">
+                        <div class="header">
+                        <div class="header">
+                            <h3 class="header-title">Edit Item</h3>
+                        </div>
+                        <div class="box-content">
+                            <p>Content</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5">
+                    <div class="l-box">
+                        <div class="header">
+                            <h3 class="header-title">Sidebar</h3>
+                        </div>
+                        <div class="box-content">
+                            <p>Sidebar content</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+</div>
+<script src="/js/functions.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+# EMBEDDED SERVER CONFIGURATION (ServerProperties)
+server:
+  port: 3000
+
+# DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test1
+    username: root
+    password: yiyun88
+    driver-class-name: com.mysql.jdbc.Driver
