@@ -1,7 +1,7 @@
 package com.ecloudtime.rs.controller;
 
-import com.ecloudtime.rs.bean.User;
-import com.ecloudtime.rs.service.UserService;
+import com.ecloudtime.rs.bean.Permission;
+import com.ecloudtime.rs.service.PermissionService;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,22 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
- * Created by eric on 2016/8/13.
+ * Created by eric on 2016/8/14.
  */
 @RestController
-@RequestMapping(value = "/user")
-public class UserController {
-
+@RequestMapping(value = "/permission")
+public class PermissionController {
     @Resource
-    private UserService userService;
+    private PermissionService permissionService;
 
-    @RequiresRoles("admin")
     @RequestMapping(value = "/find", method = RequestMethod.GET)
-    public User find(@RequestParam(value = "id") int id) {
+    public Permission find(@RequestParam(value = "id") int id) {
 
-        User user = userService.find(id);
+        Permission permission = permissionService.find(id);
 
-        return user;
+        return permission;
     }
-
 }

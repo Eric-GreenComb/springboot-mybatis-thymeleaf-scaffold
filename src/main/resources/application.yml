@@ -8,4 +8,9 @@ spring:
     url: jdbc:mysql://localhost:3306/test1
     username: root
     password: yiyun88
-    driver-class-name: com.mysql.jdbc.Driver
+    driverClass: com.mysql.jdbc.Driver
+
+#mybatis.config-location=mybatis-config.xml
+mybatis:
+  configLocation: classpath:/mybatis-config.xml
+  mapperLocations: classpath:/com/ecloudtime/rs/mapper/*.xml
