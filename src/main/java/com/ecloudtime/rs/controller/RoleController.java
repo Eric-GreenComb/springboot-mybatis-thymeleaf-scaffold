@@ -1,36 +1,36 @@
 package com.ecloudtime.rs.controller;
 
-import com.ecloudtime.rs.bean.Permission;
 import com.ecloudtime.rs.bean.Role;
 import com.ecloudtime.rs.service.RoleService;
 import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by eric on 2016/8/14.
  */
-@RestController
-@RequestMapping(value = "/role")
+@Controller
+@RequiresRoles("admin")
+@RequestMapping(value = "/admin")
 public class RoleController {
     @Resource
     private RoleService roleService;
 
-    @RequiresRoles("admin")
-    @RequestMapping(value = "/find", method = RequestMethod.GET)
-    public String find(@RequestParam(value = "id") int id) {
+    @RequestMapping(value = "/role", method = RequestMethod.GET)
+    public String roles(ModelMap map) {
 
-        Role role = roleService.find(id);
-        System.out.println(role.getId());
-        System.out.println(role.getName());
-        for(Permission permission : role.getPermissions()) {
-            System.out.println(permission.getDescription());
-        }
+        map.addAttribute("head_title", "Admin 资源管理系统");
+        map.addAttribute("menu_title", "系统");
+        map.addAttribute("breadcrumb", "Role");
 
-        return "OK";
+        List<Role> roles = roleService.query();
+        map.addAttribute("roles", roles);
+
+        return "role/role_list";
     }
 }

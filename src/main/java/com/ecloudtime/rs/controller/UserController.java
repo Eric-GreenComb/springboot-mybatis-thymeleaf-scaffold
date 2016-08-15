@@ -3,30 +3,36 @@ package com.ecloudtime.rs.controller;
 import com.ecloudtime.rs.bean.User;
 import com.ecloudtime.rs.service.UserService;
 import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by eric on 2016/8/13.
  */
-@RestController
-@RequestMapping(value = "/user")
+@Controller
+@RequiresRoles("admin")
+@RequestMapping(value = "/admin")
 public class UserController {
 
     @Resource
     private UserService userService;
 
-    @RequiresRoles("admin")
-    @RequestMapping(value = "/find", method = RequestMethod.GET)
-    public User find(@RequestParam(value = "id") int id) {
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public String users(ModelMap map) {
 
-        User user = userService.find(id);
+        map.addAttribute("head_title", "Admin 资源管理系统");
+        map.addAttribute("menu_title", "系统");
+        map.addAttribute("breadcrumb", "User");
 
-        return user;
+        List<User> users = userService.query();
+        map.addAttribute("users", users);
+
+        return "user/user_list";
     }
 
 }

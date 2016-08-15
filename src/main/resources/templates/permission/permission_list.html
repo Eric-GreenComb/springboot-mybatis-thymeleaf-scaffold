@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment_head::link"></head>
+<body>
+
+<div id="layout">
+
+    <div th:replace="fragment_menu::menu"></div>
+
+    <div id="main">
+        <div th:replace="fragment_main_header::main_header"></div>
+
+        <div class="content">
+            <div th:replace="fragment_breadcrumb::breadcrumb"></div>
+            <div class="pure-g">
+                <div class="pure-u box">
+                    <table class="pure-table pure-table-bordered">
+                        <tbody>
+
+                        <th:block th:if="${not #lists.isEmpty(permissions)}">
+                            <tr>
+                                <td class="center" style="width:50px;">序号</td>
+                                <td class="center" style="width:50px;"><h4>ID</h4></td>
+                                <td class="center" style="width:100px;"><h4>Name</h4></td>
+                                <td class="center" style="width:100px;"><h4>描述</h4></td>
+                            </tr>
+                            <th:block th:each="permission,index:${permissions}">
+                                <tr>
+                                    <td><span th:text="${index.count}">序号</span></td>
+                                    <td th:text="${permission.id}">ID</td>
+                                    <td th:text="${permission.permission}">Name</td>
+                                    <td th:text="${permission.description}">Name</td>
+                                </tr>
+                            </th:block>
+
+                        </th:block>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="/js/functions.js"></script>
+</body>
+</html>

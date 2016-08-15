@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="breadcrumb" class="breadcrumb">
+    <i class="fa fa-home"></i><a href="#" rel="Dashboard">Dashboard</a>
+    <i class="fa fa-angle-right"></i><a href="#" rel="Dashboard" th:text="${breadcrumb}">Breadcrumb</a>
+</div>
+</body>
+</html>

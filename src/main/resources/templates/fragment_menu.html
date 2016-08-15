@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>menu</title>
+</head>
+<body>
+<div th:fragment="menu" id="menu">
+    <nav class="pure-menu">
+        <h1 class="site-logo">资源管理<strong th:text="${menu_title}">System</strong></h1>
+        <div class="menu-item-divided"></div>
+        <h2 class="pure-menu-heading">用户管理</h2>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="/admin/user" class="pure-menu-link">用户管理</a></li>
+            <li class="pure-menu-item"><a href="/admin/role" class="pure-menu-link">角色管理</a></li>
+            <li class="pure-menu-item"><a href="/admin/permission" class="pure-menu-link">权限管理</a></li>
+        </ul>
+        <h2 class="pure-menu-heading">资源管理</h2>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="/resource/book" class="pure-menu-link">电子书管理</a></li>
+            <li class="pure-menu-item"><a href="/resource/book/deploy" class="pure-menu-link">电子书发布</a></li>
+        </ul>
+        <h2 class="pure-menu-heading">系统设置</h2>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Logout</a></li>
+        </ul>
+    </nav>
+</div>
+
+
+</body>
+</html>

@@ -13,7 +13,11 @@ public class BaseWebController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(ModelMap map) {
-        map.addAttribute("menu_title", "Pure");
+
+        map.addAttribute("head_title", "Admin 资源管理系统");
+        map.addAttribute("menu_title", "系统");
+        map.addAttribute("breadcrumb", "Index");
+
         return "index";
     }
 

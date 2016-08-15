@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="main_header" class="header">
+    <div class="pure-g">
+        <div class="pure-u-1-2"><h1>Dashboard</h1></div>
+        <div class="pure-u-1-2 text-right">
+            <section class="user-info">
+                <i class="fa fa-user"></i> <a href="/" rel="User">Home</a>
+                <span class="divider"></span>
+                <i class="fa fa-cog"></i> <a href="/logout" rel="User">Logout</a>
+            </section>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
